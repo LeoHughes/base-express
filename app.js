@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({
   store: new RedisStore(config.redisOption),
   key: config.proName,
-  secret: 'super-secret-key',
+  secret: config.secret,
   resave: false,
   saveUninitialized: false,
   cookie: {

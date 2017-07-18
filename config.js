@@ -14,6 +14,9 @@ exports.port = 3000
 //cookie有效时间
 exports.maxage = 60 * 60 * 1000
 
+//cookie secret
+exports.secret = 'super-secret-key'
+
 
 //redis相关配置
 exports.redisOption = {
