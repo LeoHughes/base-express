@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>login</title>
+</head>
+<body>
+
+  <form>
+    <input id="userName" type="text" name="userName" value="">
+    <input id="passWord" type="password" name="passWord" value="">
+    <input id="login" type="submit" value="登录">
+  </form>
+
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="lib/lodash.js"></script>
+  <script>
+
+    $('#login').on('click',function(e){
+
+      e.preventDefault();
+
+      $.post('/api/public/login',{
+        userName: $('#userName').val(),
+        passWord: $('#passWord').val()
+      },function(res){
+
+        console.log(res)
+
+      })
+
+    })
+
+  </script>
+</body>
+</html>

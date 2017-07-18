@@ -1,0 +1,31 @@
+{
+  "name": "project",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "LeoHughes",
+    "email": "zhihy123@qq.com"
+  },
+  "engines": {
+    "node": ">= 7.8.0"
+  },
+  "scripts": {
+    "start": "pm2 start ./pm2.config.json --watch",
+    "stop": "pm2 stop ./pm2.config.json",
+    "clear": "pm2 flush"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "captchapng": "0.0.1",
+    "compression": "^1.6.2",
+    "connect-redis": "^3.3.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "^2.6.8",
+    "ejs": "~2.5.6",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "jwt-simple": "^0.5.1",
+    "morgan": "^1.8.2",
+    "serve-favicon": "^2.4.3"
+  }
+}
