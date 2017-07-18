@@ -108,6 +108,18 @@ class util {
 
 
   /**
+   * 过滤html标签
+   * 
+   * @param {any} str 需要过滤的值
+   */
+  filterHTML(str) {
+
+    return str.replace(/<\/?[^>]*>/g, '')
+
+  }
+
+
+  /**
    * 根据时间毫秒数输出格式化时间
    * 
    * @param {any}    time   毫秒数
