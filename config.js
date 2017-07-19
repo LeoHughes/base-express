@@ -18,6 +18,9 @@ exports.maxage = 60 * 60 * 1000
 exports.secret = 'super-secret-key'
 
 
+//token key
+exports.tokenKey = `${proName}`
+
 //redis相关配置
 exports.redisOption = {
   host: '192.168.254.62', //redis 地址
