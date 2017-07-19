@@ -1,5 +1,6 @@
 const proxy = require('../mod/proxy')
 const util = require('./util')
+const config = require('../config')
 
 /**
  * 
@@ -26,9 +27,14 @@ class user extends util {
         passWord
       }
 
-      let token = this.createToken(param, 'test')
+      let token = this.createToken({
+        'userName': param.userName,
+        'time': this.now()
+      }, config.tokenKey)
 
-      console.log(this.tokenDecode(token, 'test'))
+      console.log(token)
+
+      console.log(this.tokenDecode(token, config.tokenKey))
 
       res.send({
         statusCode: 200,
