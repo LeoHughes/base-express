@@ -128,6 +128,8 @@ class util {
    */
   dateToLocaleString(time, dsper = '-', tsper = ':') {
 
+    if (!time) return
+
     let date = new Date(parseInt(time))
 
     let year = date.getFullYear()
@@ -142,6 +144,18 @@ class util {
     seconds = seconds < 10 ? '0' + seconds : seconds
 
     return `${year}${dsper}${month}${dsper}${day} ${hours}${tsper}${minutes}${tsper}${seconds}`
+
+  }
+
+  /**
+   * 
+   * 生成时间戳
+   */
+  now() {
+
+    let time = this.dateToLocaleString(new Date().getTime(), '', '')
+
+    return time.replace(/ /g, '')
 
   }
 
