@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 /** 
  * @class controller
  * 
@@ -5,19 +7,26 @@
 
 class controller {
 
-  constructor(...models) {
+  constructor() {
 
-    for (let item of models) {
+    let arr = fs.readdirSync(__dirname)
 
-      this[item.name] = new item()
+    arr.forEach((el) => {
 
-    }
+      if (el !== 'index.js') {
+
+        let objName = el.replace('.js', '')
+
+        let obj = require(`./${el}`)
+
+        this[objName] = new obj()
+
+      }
+
+    })
 
   }
 
 }
 
-module.exports = new controller(
-  require('./page'),
-  require('./user')
-)
+module.exports = new controller()
