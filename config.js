@@ -2,7 +2,7 @@
 
 
 //项目名称
-const proName = 'project'
+const proName = 'base-express'
 
 exports.proName = proName
 
