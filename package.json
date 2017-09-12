@@ -1,7 +1,6 @@
 {
-  "name": "project",
-  "version": "0.0.1",
-  "private": true,
+  "name": "base-express",
+  "version": "0.1.0",
   "author": {
     "name": "LeoHughes",
     "email": "zhihy123@qq.com"
