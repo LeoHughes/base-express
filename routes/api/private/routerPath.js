@@ -2,7 +2,7 @@
 let prefix = '/api/private'
 
 // 映射路由地址
-let router_path = {
+let paths = {
 
   /**
    * 测试登录地址
@@ -13,6 +13,6 @@ let router_path = {
 
 
 // 统一添加前缀
-router_path = require('../../middleware/addMapPrefix.js')(prefix, router_path)
+router_path = require('../../middleware/addMapPrefix.js')(prefix, paths)
 
 module.exports = router_path
