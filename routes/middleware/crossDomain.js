@@ -4,10 +4,13 @@
 
 module.exports = (req, res, next) => {
 
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header('Access-Control-Allow-Methods', 'GET, POST')
-  res.header("Access-Control-Allow-Headers", "X-Requested-With")
-  res.header('Access-Control-Allow-Headers', 'Content-Type')
+  //设置允许请求的域
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  //设置允许请求的方法
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  //设置可以在header里传输的数据
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,userToken');
+  res.setHeader('Access-Control-Allow-Credentials', true);
 
   next()
 
