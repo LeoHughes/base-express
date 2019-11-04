@@ -23,7 +23,7 @@ exports.tokenKey = `${proName}`
 
 //redis相关配置
 exports.redisOption = {
-  host: '192.168.254.62', //redis 地址
+  host: '127.0.0.1', //redis 地址
   port: '6379', //端口
   pass: '', //数据库密码
   db: 0, //使用的数据库索引，默认 0

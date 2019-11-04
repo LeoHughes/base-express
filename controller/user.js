@@ -1,22 +1,16 @@
-const proxy = require('../mod/proxy')
+/**
+ * user业务模块
+ */
+
 const util = require('./util')
 const config = require('../config')
 
-/**
- * 
- * 
- * @class user
- */
-class user extends util {
-
-  constructor() {
-    super()
-  }
+module.exports = {
 
   /**
    * 登录
    */
-  login() {
+  login: () => {
 
     return (req, res) => {
 
@@ -27,14 +21,16 @@ class user extends util {
         passWord
       }
 
-      let token = this.createToken({
+      let token = util.createToken({
         'userName': param.userName,
-        'time': this.now()
+        'time': util.now()
       }, config.tokenKey)
 
       console.log(token)
 
-      console.log(this.tokenDecode(token, config.tokenKey))
+      console.log(util.tokenDecode(token, config.tokenKey))
+
+      req.session.user = token
 
       res.send({
         statusCode: 200,
@@ -46,5 +42,3 @@ class user extends util {
   }
 
 }
-
-module.exports = user

@@ -6,19 +6,18 @@ const jwt = require('jwt-simple')
  * 公用方法类
  */
 
-class util {
 
-  constructor() {}
 
+module.exports = {
 
   /**
    * 检测类型是否是Null、undefined或者''
    * 
    * @param {any} obj 
    */
-  isNull(obj) {
+  isNull: obj => {
     return obj === '' || obj === undefined || obj === null ? true : false
-  }
+  },
 
 
   /**
@@ -26,9 +25,9 @@ class util {
    * 
    * @param {any} obj 
    */
-  isArray(obj) {
+  isArray: obj => {
     return Object.prototype.toString.call(obj) === '[object Array]' ? true : false
-  }
+  },
 
 
   /**
@@ -36,9 +35,9 @@ class util {
    * 
    * @param {any} obj 
    */
-  isFunction(obj) {
+  isFunction: obj => {
     return Object.prototype.toString.call(obj) === '[object Function]' ? true : false
-  }
+  },
 
 
   /**
@@ -46,9 +45,9 @@ class util {
    * 
    * @param {any} obj 
    */
-  isObject(obj) {
+  isObject: obj => {
     return Object.prototype.toString.call(obj) === '[object Object]' ? true : false
-  }
+  },
 
 
   /**
@@ -56,9 +55,9 @@ class util {
    * 
    * @param {any} obj 
    */
-  isString(obj) {
+  isString: obj => {
     return Object.prototype.toString.call(obj) === '[object String]' ? true : false
-  }
+  },
 
 
   /**
@@ -66,9 +65,9 @@ class util {
    * 
    * @param {any} obj 
    */
-  isNumber(obj) {
+  isNumber: obj => {
     return Object.prototype.toString.call(obj) === '[object Number]' ? true : false
-  }
+  },
 
 
   /**
@@ -76,9 +75,9 @@ class util {
    * 
    * @param {any} obj 
    */
-  isBoolean(obj) {
+  isBoolean: obj => {
     return Object.prototype.toString.call(obj) === '[object Boolean]' ? true : false
-  }
+  },
 
 
   /**
@@ -86,7 +85,7 @@ class util {
    * 
    * @param {any} obj 
    */
-  isEmpty(obj) {
+  isEmpty: function(obj) {
     let flag = true
 
     if (this.isArray(obj) || this.isNumber(obj) || this.isString(obj)) {
@@ -104,7 +103,7 @@ class util {
     }
 
     return flag
-  }
+  },
 
 
   /**
@@ -112,11 +111,11 @@ class util {
    * 
    * @param {any} str 需要过滤的值
    */
-  filterHTML(str) {
+  filterHTML: str => {
 
     return str.replace(/<\/?[^>]*>/g, '')
 
-  }
+  },
 
 
   /**
@@ -126,7 +125,7 @@ class util {
    * @param {string} dsper  日期分隔符
    * @param {string} tsper  时间分隔符
    */
-  dateToLocaleString(time, dsper = '-', tsper = ':') {
+  dateToLocaleString: (time, dsper = '-', tsper = ':') => {
 
     if (!time) return
 
@@ -145,26 +144,26 @@ class util {
 
     return `${year}${dsper}${month}${dsper}${day} ${hours}${tsper}${minutes}${tsper}${seconds}`
 
-  }
+  },
 
   /**
    * 
    * 生成时间戳
    */
-  now() {
+  now: function() {
 
     let time = this.dateToLocaleString(new Date().getTime(), '', '')
 
     return time.replace(/ /g, '')
 
-  }
+  },
 
 
   /**
    * 
    * 生成验证码图片
    */
-  createImgCode() {
+  createImgCode: () => {
 
     return (req, res) => {
 
@@ -183,7 +182,7 @@ class util {
       res.end(imgbase64)
     }
 
-  }
+  },
 
 
   /**
@@ -192,11 +191,11 @@ class util {
    * @param {any} payload    需要加密的信息
    * @param {any} key     加密key
    */
-  createToken(payload, key) {
+  createToken: (payload, key) => {
 
     return jwt.encode(payload, key)
 
-  }
+  },
 
 
   /**
@@ -205,11 +204,11 @@ class util {
    * @param {any} token   需要解密的token值 
    * @param {any} key     加密key
    */
-  tokenDecode(token, key) {
+  tokenDecode: (token, key) => {
 
     return jwt.decode(token, key)
 
-  }
+  },
 
 
   /**
@@ -219,7 +218,7 @@ class util {
    * @param {any}     param  渲染数据
    * 
    */
-  render(name = '', param = {}) {
+  render: (name = '', param = {}) => {
 
     return (req, res) => {
 
@@ -230,5 +229,3 @@ class util {
   }
 
 }
-
-module.exports = util

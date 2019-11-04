@@ -1,5 +1,5 @@
 // 设置前缀
-let prefix = '/api/public'
+let prefix = '/api/user'
 
 // 映射路由地址
 let paths = {

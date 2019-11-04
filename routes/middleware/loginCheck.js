@@ -4,14 +4,18 @@
 
 module.exports = (req, res, next) => {
 
-  if (!req.session.user) {
+  return (req, res, next) =>{
 
-    res.redirect('/login')
+    if (!req.session.user) {
 
-  } else {
-
-    next()
-
+      res.redirect('/login')
+  
+    } else {
+  
+      next()
+  
+    }
+    
   }
 
 }

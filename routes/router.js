@@ -1,18 +1,11 @@
 //路由配置
+const page_router = require('./page_routes')
+const api_user = require('./api/user_api/index')
 
-const page_router = require('./page')
-const api_public = require('./api/public/index')
-const api_private = require('./api/private/index')
+module.exports = (app,router) => {
 
-module.exports = app => {
+  app.use(page_router(router))
 
-  // 配置页面访问路由
-  page_router(app)
-
-  // 配置公用接口路由
-  api_public(app)
-
-  // 配置私有接口路由
-  api_private(app)
+  app.use('/api/user/*', api_user(router))
 
 };

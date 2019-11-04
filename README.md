@@ -3,14 +3,7 @@
 
 |--bin              Express服务器启动文件
 |-controller        逻辑处理层文件
-|--mod              底层http请求ProxyModel的封装
 |--public           脚本、样式及图片资源
-  |--components     Vue公用组件
-  |--images         图片资源
-  |--js             js交互脚本文件
-  |--lib            js公用库、框架
-  |--page           页面逻辑js文件
-  |--style          样式文件
 |--routes           路由配置及中间件
   |--api            接口路由及配置文件
   |--middleware     中间件

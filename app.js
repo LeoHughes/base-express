@@ -8,19 +8,19 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const compression = require('compression')
 const session = require('express-session')
+const redis = require('redis')
 const RedisStore = require('connect-redis')(session)
 const config = require('./config')
+const redisClient = redis.createClient(config.redisOption)
 
 // import middleware
 const isAuthorize = require('./routes/middleware/isAuthorize')
 
-// import controller
-const controller = require('./controller/index')
-
 // import router
-const router = require('./routes/router')
+const routes = require('./routes/router')
 
 let app = express()
+let router = express.Router()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -40,7 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // use session
 app.use(session({
-  store: new RedisStore(config.redisOption),
+  store: new RedisStore({
+    client: redisClient
+  }),
   key: config.proName,
   secret: config.secret,
   resave: false,
@@ -51,14 +53,10 @@ app.use(session({
   }
 }))
 
-// check authorize
-app.use('/api/private/*', isAuthorize)
 
-// use controller
-if (!app.controller) app.controller = controller
 
 // use router
-router(app)
+routes(app,router)
 
 // catch connect redis failed
 app.use(function(req, res, next) {
