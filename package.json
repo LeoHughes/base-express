@@ -21,7 +21,7 @@
     "cookie-parser": "^1.4.4",
     "debug": "^4.1.1",
     "ejs": "^2.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.17.0",
     "interfaceproxy": "^1.1.1",
     "jwt-simple": "^0.5.6",
